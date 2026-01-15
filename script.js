@@ -11,8 +11,8 @@ const productPrices = {
     'Produit 2': 1799,
     'Pack Vitamine C Essentiel': 3580,
     'Pack Peau Parfaite — Routine Complète': 5870,
-    'PACK COLLAGEN': 6200,
-    'BOITE COLLAGEN': 1590
+    '✨ Pack Collagène Premium - Jeunesse Éternelle': 6200,
+    '💎 Boîte Collagène Essentiel - Éclat Quotidien': 1590
 };
 
 // Variables du panier
@@ -270,6 +270,11 @@ function continueToForm() {
 function openOrderForm(productName, quantity = 1, price = 0) {
     const modal = document.getElementById('orderModal');
     const productInput = document.getElementById('productName');
+    const packTypeGroup = document.getElementById('packTypeGroup');
+    const productNameGroup = document.getElementById('productNameGroup');
+    const productNameDisplay = document.getElementById('productNameDisplay');
+    const packSelect = document.getElementById('packType');
+    const priceLabel = document.getElementById('priceLabel');
     
     if (productInput) {
         productInput.value = productName;
@@ -289,19 +294,35 @@ function openOrderForm(productName, quantity = 1, price = 0) {
     currentCart.quantity = quantity;
     currentCart.productName = productName;
     
-    // Réinitialiser les sélections
-    const packSelect = document.getElementById('packType');
-    const wilayaSelect = document.getElementById('wilaya');
-    if (packSelect) {
-        // Si le produit correspond à un pack, le sélectionner dans le dropdown
-        if (productName === 'Pack Vitamine C Essentiel' || productName === 'Pack Peau Parfaite — Routine Complète') {
+    // Déterminer si c'est un pack ou un produit individuel
+    const isPack = productName === 'Pack Vitamine C Essentiel' || productName === 'Pack Peau Parfaite — Routine Complète';
+    
+    // Afficher/masquer les champs appropriés
+    if (isPack) {
+        // C'est un pack - afficher le sélecteur de pack
+        if (packTypeGroup) packTypeGroup.style.display = 'block';
+        if (productNameGroup) productNameGroup.style.display = 'none';
+        if (packSelect) {
             packSelect.value = productName;
-            currentCart.packType = productName;
-        } else {
-            packSelect.value = '';
-            currentCart.packType = '';
+            packSelect.required = true;
         }
+        currentCart.packType = productName;
+        if (priceLabel) priceLabel.textContent = 'Prix du pack :';
+    } else {
+        // C'est un produit individuel - afficher le nom du produit
+        if (packTypeGroup) packTypeGroup.style.display = 'none';
+        if (productNameGroup) productNameGroup.style.display = 'block';
+        if (productNameDisplay) productNameDisplay.textContent = productName;
+        if (packSelect) {
+            packSelect.value = '';
+            packSelect.required = false;
+        }
+        currentCart.packType = '';
+        if (priceLabel) priceLabel.textContent = 'Prix du produit :';
     }
+    
+    // Réinitialiser la wilaya
+    const wilayaSelect = document.getElementById('wilaya');
     if (wilayaSelect) wilayaSelect.value = '';
     currentCart.deliveryPrice = 0; // Réinitialiser à 0 jusqu'à ce qu'une wilaya soit sélectionnée
     
@@ -319,6 +340,12 @@ function closeOrderForm() {
     
     // Réinitialiser le formulaire
     document.getElementById('orderForm').reset();
+    
+    // Réinitialiser l'affichage des champs
+    const packTypeGroup = document.getElementById('packTypeGroup');
+    const productNameGroup = document.getElementById('productNameGroup');
+    if (packTypeGroup) packTypeGroup.style.display = 'none';
+    if (productNameGroup) productNameGroup.style.display = 'none';
 }
 
 // Fermer le modal en cliquant en dehors
@@ -339,15 +366,26 @@ function submitOrder(event) {
     event.preventDefault();
     
     const packSelect = document.getElementById('packType');
+    const productInput = document.getElementById('productName');
     const wilayaSelect = document.getElementById('wilaya');
     const quantityInput = document.getElementById('quantity');
     
     const packType = packSelect?.value || '';
+    const productName = productInput?.value || currentCart.productName || '';
     const wilaya = wilayaSelect?.value || '';
     const quantity = parseInt(quantityInput?.value || 1);
     
-    if (!packType) {
+    // Déterminer si c'est un pack ou un produit
+    const isPack = packType !== '' || (productName === 'Pack Vitamine C Essentiel' || productName === 'Pack Peau Parfaite — Routine Complète');
+    const orderItem = isPack ? packType : productName;
+    
+    if (isPack && !packType) {
         alert('Veuillez sélectionner un type de pack');
+        return;
+    }
+    
+    if (!isPack && !productName) {
+        alert('Erreur : produit non identifié');
         return;
     }
     
@@ -356,7 +394,8 @@ function submitOrder(event) {
         return;
     }
     
-    const price = productPrices[packType] || 0;
+    // Utiliser le prix du panier actuel ou chercher dans productPrices
+    const price = currentCart.price || productPrices[orderItem] || 0;
     const deliveryPrice = wilayasDelivery[wilaya];
     
     if (deliveryPrice === 9999) {
@@ -368,7 +407,8 @@ function submitOrder(event) {
     const total = subtotal + (deliveryPrice || 0);
     
     const formData = {
-        packType: packType,
+        item: orderItem,
+        isPack: isPack,
         wilaya: wilaya,
         customerName: document.getElementById('customerName').value,
         customerPhone: document.getElementById('customerPhone').value,
@@ -382,8 +422,9 @@ function submitOrder(event) {
     
     // Créer le message pour WhatsApp
     const deliveryText = deliveryPrice === 0 ? 'Gratuite' : `${formData.delivery} DA`;
+    const itemLabel = isPack ? '📦 Pack' : '🛍️ Produit';
     const message = `Bonjour, je souhaite passer une commande :%0A%0A` +
-        `📦 Pack : ${formData.packType}%0A` +
+        `${itemLabel} : ${formData.item}%0A` +
         `🔢 Quantité : ${formData.quantity}%0A` +
         `💰 Prix unitaire : ${formData.price} DA%0A` +
         `📊 Sous-total : ${formData.subtotal} DA%0A` +
@@ -458,26 +499,32 @@ function updateDeliveryPrice() {
     }
 }
 
-// Mettre à jour le prix du pack
+// Mettre à jour le prix du pack/produit
 function updatePackPrice() {
     const packSelect = document.getElementById('packType');
+    const productInput = document.getElementById('productName');
     const quantityInput = document.getElementById('quantity');
     
+    const quantity = parseInt(quantityInput?.value || 1);
+    currentCart.quantity = quantity;
+    
     if (packSelect && packSelect.value) {
+        // C'est un pack
         const packPrice = productPrices[packSelect.value] || 0;
-        const quantity = parseInt(quantityInput?.value || 1);
         currentCart.packType = packSelect.value;
         currentCart.price = packPrice;
-        currentCart.quantity = quantity;
-        
-        // Toujours mettre à jour le résumé, même si le prix est 0
-        updateOrderSummary();
-    } else {
-        // Si aucun pack n'est sélectionné, réinitialiser
-        currentCart.price = 0;
-        currentCart.quantity = parseInt(quantityInput?.value || 1);
-        updateOrderSummary();
+        currentCart.productName = packSelect.value;
+    } else if (productInput && productInput.value) {
+        // C'est un produit individuel
+        const productName = productInput.value;
+        const productPrice = productPrices[productName] || currentCart.price || 0;
+        currentCart.productName = productName;
+        currentCart.price = productPrice;
+        currentCart.packType = '';
     }
+    
+    // Toujours mettre à jour le résumé
+    updateOrderSummary();
 }
 
 // Mettre à jour le résumé de commande
@@ -486,18 +533,26 @@ function updateOrderSummary() {
     const deliveryPriceSpan = document.getElementById('summaryDelivery');
     const totalSpan = document.getElementById('summaryTotal');
     
-    // S'assurer que le prix est correctement récupéré si un pack est sélectionné
+    // S'assurer que le prix est correctement récupéré
     const packSelect = document.getElementById('packType');
-    if (packSelect && packSelect.value && currentCart.price === 0) {
-        currentCart.price = productPrices[packSelect.value] || 0;
+    const productInput = document.getElementById('productName');
+    
+    if (currentCart.price === 0) {
+        if (packSelect && packSelect.value) {
+            // C'est un pack
+            currentCart.price = productPrices[packSelect.value] || 0;
+        } else if (productInput && productInput.value) {
+            // C'est un produit individuel
+            currentCart.price = productPrices[productInput.value] || 0;
+        }
     }
     
-    const packPrice = currentCart.price * (currentCart.quantity || 1);
+    const itemPrice = currentCart.price * (currentCart.quantity || 1);
     const deliveryPrice = currentCart.deliveryPrice || 0;
-    const total = packPrice + deliveryPrice;
+    const total = itemPrice + deliveryPrice;
     
     if (packPriceSpan) {
-        packPriceSpan.textContent = packPrice + ' DA';
+        packPriceSpan.textContent = itemPrice + ' DA';
     }
     
     if (deliveryPriceSpan) {

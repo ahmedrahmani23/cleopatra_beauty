@@ -132,32 +132,32 @@
             <div class="products-grid">
                 <div class="product-card product-card-1">
                     <div class="product-images-container">
-                        <img class="product-image" src="images/produit1.png" alt="PACK COLLAGEN">
+                        <img class="product-image" src="images/produit1.png" alt="✨ Pack Collagène Premium - Jeunesse Éternelle">
                     </div>
                     <div class="product-info">
-                        <h3>PACK COLLAGEN</h3>
+                        <h3>✨ Pack Collagène Premium - Jeunesse Éternelle</h3>
                         <p class="product-description-text">Pack complet de collagène pour une peau éclatante et ferme. Formule enrichie en vitamines essentielles.</p>
                         <div class="product-prices">
                             <span class="original-price">7500 DA</span>
                             <span class="promo-price">6200 DA</span>
                             <span class="promo-badge">-17%</span>
                         </div>
-                        <button class="buy-btn-small" onclick="openCartDirect('PACK COLLAGEN', 6200)">Acheter</button>
+                        <button class="buy-btn-small" onclick="openCartDirect('✨ Pack Collagène Premium - Jeunesse Éternelle', 6200)">Acheter</button>
                     </div>
                 </div>
                 <div class="product-card product-card-2">
                     <div class="product-images-container">
-                        <img class="product-image" src="images/PRODUIT2.png" alt="BOITE COLLAGEN">
+                        <img class="product-image" src="images/PRODUIT2.png" alt="💎 Boîte Collagène Essentiel - Éclat Quotidien">
                     </div>
                     <div class="product-info">
-                        <h3>BOITE COLLAGEN</h3>
+                        <h3>💎 Boîte Collagène Essentiel - Éclat Quotidien</h3>
                         <p class="product-description-text">Boîte de collagène premium pour une routine beauté quotidienne. Résultats visibles dès la première semaine.</p>
                         <div class="product-prices">
                             <span class="original-price">2000 DA</span>
                             <span class="promo-price">1590 DA</span>
                             <span class="promo-badge">-20%</span>
                         </div>
-                        <button class="buy-btn-small" onclick="openCartDirect('BOITE COLLAGEN', 1590)">Acheter</button>
+                        <button class="buy-btn-small" onclick="openCartDirect('💎 Boîte Collagène Essentiel - Éclat Quotidien', 1590)">Acheter</button>
                     </div>
                 </div>
             </div>
@@ -232,14 +232,25 @@
             <span class="close" onclick="closeOrderForm()">&times;</span>
             <h2>Formulaire de Commande</h2>
             <form id="orderForm" onsubmit="submitOrder(event)">
-                <div class="form-group">
+                <!-- Champ caché pour le nom du produit -->
+                <input type="hidden" id="productName" name="productName">
+                
+                <!-- Champ Type de Pack (affiché uniquement pour les packs) -->
+                <div class="form-group" id="packTypeGroup" style="display: none;">
                     <label for="packType">Type de Pack :</label>
-                    <select id="packType" name="packType" required onchange="updatePackPrice()">
+                    <select id="packType" name="packType" onchange="updatePackPrice()">
                         <option value="">Sélectionner un pack</option>
                         <option value="Pack Vitamine C Essentiel">✨ Pack Vitamine C Essentiel - 3580 DA</option>
                         <option value="Pack Peau Parfaite — Routine Complète">Pack Peau Parfaite — Routine Complète - 5870 DA</option>
                     </select>
                 </div>
+                
+                <!-- Affichage du produit (pour les produits individuels) -->
+                <div class="form-group" id="productNameGroup" style="display: none;">
+                    <label>Produit :</label>
+                    <div style="padding: 10px; background: #f5f5f5; border-radius: 5px; font-weight: bold;" id="productNameDisplay"></div>
+                </div>
+                
                 <div class="form-group">
                     <label for="wilaya">Wilaya :</label>
                     <select id="wilaya" name="wilaya" required onchange="updateDeliveryPrice()" style="max-height: 200px; overflow-y: auto;">
@@ -265,7 +276,7 @@
                 </div>
                 <div class="order-summary">
                     <div class="summary-row">
-                        <span>Prix du pack :</span>
+                        <span id="priceLabel">Prix :</span>
                         <span id="summaryPackPrice">0 DA</span>
                     </div>
                     <div class="summary-row">
