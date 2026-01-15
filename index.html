@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEOPATRA BEAUTY - Votre destination beauté premium</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <span class="logo-name">CLEOPATRA BEAUTY</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://wa.me/213670422850" target="_blank" rel="noopener noreferrer" class="whatsapp-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="whatsapp-svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/cleopatra_beauty16/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" class="instagram-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="instagram-svg">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Hero avec photo d'arrière-plan -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+                <h1 class="hero-title">CLEOPATRA BEAUTY</h1>
+                <p class="hero-subtitle">Votre destination beauté premium</p>
+        </div>
+        <!-- Cadre pour la photo du produit dans la bannière -->
+        <div class="product-image-container hero-product">
+            <img class="pack-image active" src="images/produit1 (2).png" alt="Pack Complet">
+            <img class="pack-image" src="images/pack1.png" alt="Pack Complet - Photo 2">
+        </div>
+        <!-- Bouton Acheter en bas du cadre produit -->
+        <button class="hero-buy-btn" onclick="openCart()">
+            Acheter Maintenant
+        </button>
+    </section>
+
+    <!-- Section principale -->
+    <main class="main-content">
+
+        <!-- Description du produit -->
+        <section class="description-section">
+            <h2>À propos de nos produits</h2>
+            <div class="product-description">
+                <div class="description-item">
+                    <span class="description-icon">🧴</span>
+                    <div class="description-content">
+                        <h3>Pack Complet Professionnel</h3>
+                        <p>Notre pack complet est composé de produits soigneusement sélectionnés pour une routine de soin optimale.</p>
+                    </div>
+                </div>
+                <div class="description-item">
+                    <span class="description-icon">🫧</span>
+                    <div class="description-content">
+                        <h3>Gel Nettoyant Doux</h3>
+                        <p>Un gel nettoyant doux qui nettoie en profondeur sans agresser votre peau, pour un teint frais et éclatant.</p>
+                    </div>
+                </div>
+                <div class="description-item">
+                    <span class="description-icon">🍊</span>
+                    <div class="description-content">
+                        <h3>Sérum à la Vitamine C</h3>
+                        <p>Sérum à la Vitamine C Illumine le teint, unifie la peau et aide à réduire les taches et imperfections pour un effet glow visible.</p>
+                    </div>
+                </div>
+                <div class="description-item">
+                    <span class="description-icon">💧</span>
+                    <div class="description-content">
+                        <h3>Crème Hydratante</h3>
+                        <p>Une crème hydratante nourrissante qui hydrate intensément votre peau pour un confort quotidien.</p>
+                    </div>
+                </div>
+                <div class="description-item">
+                    <span class="description-icon">☀️</span>
+                    <div class="description-content">
+                        <h3>Écran Solaire SPF50</h3>
+                        <p>Protection solaire maximale avec SPF50 pour protéger votre peau des rayons UV et prévenir le vieillissement prématuré.</p>
+                    </div>
+                </div>
+                <div class="description-highlight">
+                    <p>✨ Obtiens un <strong>Glass Skin</strong> naturel, lisse et éclatant, jour après jour, sans filtre ✨</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cadre pour présentation vidéo avec rotation -->
+        <section class="media-section">
+            <div class="media-container">
+                <!-- Photos -->
+                <img class="media-content active" src="images/rotation1.jpg" alt="Photo produit 1">
+                <img class="media-content" src="images/rotation2.jpeg" alt="Photo produit 2">
+                <img class="media-content" src="images/rotation3.jpeg" alt="Photo produit 3">
+                
+                <!-- Vidéos -->
+                <video class="media-content" muted loop>
+                    <source src="videos/video1.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo.
+                </video>
+                
+                <!-- Points indicateurs dans le cadre -->
+                <div class="media-dots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                    <span class="dot" data-index="2"></span>
+                    <span class="dot" data-index="3"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Description du magasin -->
+        <section class="store-description-section">
+            <h2>عن متجرنا</h2>
+            <p class="store-description">
+                مرحباً بكم في متجرنا المتخصص في منتجات العناية بالبشرة عالية الجودة. نحن نقدم لكم أفضل المنتجات الطبيعية والفعالة للعناية ببشرتك. متجرنا يضمن لكم الجودة والأصالة في كل منتج، مع خدمة عملاء ممتازة وتوصيل سريع. نحن هنا لمساعدتك في العثور على المنتجات المثالية لبشرتك.
+            </p>
+        </section>
+
+        <!-- Section More Products -->
+        <section class="more-products-section">
+            <h2>Plus de Produits</h2>
+            <div class="products-grid">
+                <div class="product-card product-card-1">
+                    <div class="product-images-container">
+                        <img class="product-image" src="images/produit1.png" alt="PACK COLLAGEN">
+                    </div>
+                    <div class="product-info">
+                        <h3>PACK COLLAGEN</h3>
+                        <p class="product-description-text">Pack complet de collagène pour une peau éclatante et ferme. Formule enrichie en vitamines essentielles.</p>
+                        <div class="product-prices">
+                            <span class="original-price">7500 DA</span>
+                            <span class="promo-price">6200 DA</span>
+                            <span class="promo-badge">-17%</span>
+                        </div>
+                        <button class="buy-btn-small" onclick="openCartDirect('PACK COLLAGEN', 6200)">Acheter</button>
+                    </div>
+                </div>
+                <div class="product-card product-card-2">
+                    <div class="product-images-container">
+                        <img class="product-image" src="images/PRODUIT2.png" alt="BOITE COLLAGEN">
+                    </div>
+                    <div class="product-info">
+                        <h3>BOITE COLLAGEN</h3>
+                        <p class="product-description-text">Boîte de collagène premium pour une routine beauté quotidienne. Résultats visibles dès la première semaine.</p>
+                        <div class="product-prices">
+                            <span class="original-price">2000 DA</span>
+                            <span class="promo-price">1590 DA</span>
+                            <span class="promo-badge">-20%</span>
+                        </div>
+                        <button class="buy-btn-small" onclick="openCartDirect('BOITE COLLAGEN', 1590)">Acheter</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Tranches d'oranges animées en arrière-plan -->
+    <div class="orange-slices-container">
+        <div class="orange-slice slice-1"></div>
+        <div class="orange-slice slice-2"></div>
+        <div class="orange-slice slice-3"></div>
+        <div class="orange-slice slice-4"></div>
+        <div class="orange-slice slice-5"></div>
+        <div class="orange-slice slice-6"></div>
+        <div class="orange-slice slice-7"></div>
+        <div class="orange-slice slice-8"></div>
+    </div>
+
+    <!-- Bouton Acheter toujours visible (sticky) -->
+    <button class="sticky-buy-btn" onclick="openCart()">
+        Acheter Maintenant
+    </button>
+
+    <!-- Panier (modal) -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>Choisissez votre Pack</h2>
+            <div class="cart-packs-selection">
+                <div class="pack-option" onclick="selectPack('Pack Vitamine C Essentiel', 3580)">
+                    <div class="pack-option-header">
+                        <h3>✨ Pack Vitamine C Essentiel</h3>
+                        <span class="pack-price">3580 DA</span>
+                    </div>
+                </div>
+                <div class="pack-option" onclick="selectPack('Pack Peau Parfaite — Routine Complète', 5870)">
+                    <div class="pack-option-header">
+                        <h3>Pack Peau Parfaite — Routine Complète</h3>
+                        <span class="pack-price">5870 DA</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-summary" id="cartSummary" style="display: none;">
+                <div class="cart-item">
+                    <span class="cart-product-name" id="cartProductName"></span>
+                    <div class="cart-quantity-control">
+                        <button type="button" class="qty-btn" onclick="changeQuantity(-1)">-</button>
+                        <span class="cart-quantity" id="cartQuantity">1</span>
+                        <button type="button" class="qty-btn" onclick="changeQuantity(1)">+</button>
+                    </div>
+                </div>
+                <div class="cart-price-row">
+                    <span>Sous-total :</span>
+                    <span id="cartSubtotal">0 DA</span>
+                </div>
+                <div class="cart-price-row">
+                    <span>Livraison :</span>
+                    <span id="cartDeliveryPrice">0 DA</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Total :</span>
+                    <span id="cartTotal">0 DA</span>
+                </div>
+            </div>
+            <button type="button" id="continueBtn" class="continue-btn" onclick="continueToForm()">Continuer</button>
+        </div>
+    </div>
+
+    <!-- Formulaire de commande (modal) -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderForm()">&times;</span>
+            <h2>Formulaire de Commande</h2>
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="packType">Type de Pack :</label>
+                    <select id="packType" name="packType" required onchange="updatePackPrice()">
+                        <option value="">Sélectionner un pack</option>
+                        <option value="Pack Vitamine C Essentiel">✨ Pack Vitamine C Essentiel - 3580 DA</option>
+                        <option value="Pack Peau Parfaite — Routine Complète">Pack Peau Parfaite — Routine Complète - 5870 DA</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="wilaya">Wilaya :</label>
+                    <select id="wilaya" name="wilaya" required onchange="updateDeliveryPrice()" style="max-height: 200px; overflow-y: auto;">
+                        <option value="">Sélectionner une wilaya</option>
+                    </select>
+                    <small style="color: #666; font-size: 0.9em; display: block; margin-top: 5px;">🚚 Livraison à domicile disponible</small>
+                </div>
+                <div class="form-group">
+                    <label for="customerName">Nom complet :</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerPhone">Téléphone :</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerAddress">Adresse détaillée :</label>
+                    <textarea id="customerAddress" name="customerAddress" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantité :</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" required onchange="updatePackPrice()">
+                </div>
+                <div class="order-summary">
+                    <div class="summary-row">
+                        <span>Prix du pack :</span>
+                        <span id="summaryPackPrice">0 DA</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Livraison :</span>
+                        <span id="summaryDelivery">0 DA</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total :</span>
+                        <span id="summaryTotal">0 DA</span>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Envoyer la Commande</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="wilayas.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
