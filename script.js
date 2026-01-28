@@ -9,8 +9,8 @@ const productPrices = {
     'Vitmanie C Serum': 1999,
     'Produit 1': 1499,
     'Produit 2': 1799,
-    'Pack Vitamine C Essentiel': 3580,
-    'Pack Peau Parfaite — Routine Complète': 5870,
+    'Pack Vitamine C Essentiel': 3200,
+    'Pack Peau Parfaite — Routine Complète': 5400,
     '✨ Pack Collagène Premium - Jeunesse Éternelle': 6200,
     '💎 Boîte Collagène Essentiel - Éclat Quotidien': 1590
 };
